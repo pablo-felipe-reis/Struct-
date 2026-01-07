@@ -13,8 +13,10 @@ struct tipo_pessoa{
 
 typedef struct tipo_pessoa tipo_pessoa;
 
+int limpar_buffer();
+
 int main(){
-    setlocale(LC_ALL, "Portuguese");  // 
+    //setlocale(LC_ALL, "Portuguese");  // 
     tipo_pessoa lista[TAM];
     int i;
     
@@ -25,18 +27,21 @@ int main(){
         
         puts("Nome: ");
         scanf("%49[^\n]", &lista[i].nome);    // [^\n] este trecho permite a ler o sacanf consegue ler espaços
-        fflush(stdin);
+        //fflush(stdin);
+        limpar_buffer();
         
         puts("Idade: ");
         scanf("%d" , &lista[i].idade);
-        fflush(stdin)
+        //fflush(stdin);
+        limpar_buffer();
 
-    puts("Peso: ");
-      scanf("%f",&lista[i].peso);
-        fflush(stdin);
+        puts("Peso: ");
+        scanf("%f",&lista[i].peso);
+        //fflush(stdin);
+        limpar_buffer();
     }
     
-        system("cls")
+    system("cls");
 
     puts("\nSeus dados:\n");
 
@@ -50,4 +55,9 @@ int main(){
 
     system("pause");
     return 0;
+}
+
+int limpar_buffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
